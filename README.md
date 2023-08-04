@@ -4,4 +4,4 @@ Functionalities:
 - Delete a User from a database
 - Update a User from a database
 - Get user(s)
-- Utlizied amazon simple email service (ses) to reset user password, and email verification.
+- Utilizes Amazon Simple Email Service (SES) to reset user password, and email verification.
