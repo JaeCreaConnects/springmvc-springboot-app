@@ -32,7 +32,7 @@ class UserRepositoryTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		
-		if(!recordsCreated) createRecrods();
+		if(!recordsCreated) createRecords();
 	}
 
 	@Test
@@ -43,31 +43,31 @@ class UserRepositoryTest {
 		
         List<UserEntity> userEntities = page.getContent();
         assertNotNull(userEntities);
-        assertTrue(userEntities.size() == 1);
+		assertEquals(1, userEntities.size());
 	}
 	
 	@Test 
 	final void testFindUserByFirstName()
 	{
-		String firstName="Sergey";
+		String firstName="Test";
 		List<UserEntity> users = userRepository.findUserByFirstName(firstName);
 		assertNotNull(users);
-		assertTrue(users.size() == 2);
+		assertEquals(2, users.size());
 		
 		UserEntity user = users.get(0);
-		assertTrue(user.getFirstName().equals(firstName));
+		assertEquals(user.getFirstName(), firstName);
 	}
 	
 	@Test 
 	final void testFindUserByLastName()
 	{
-		String lastName="Kargopolov";
+		String lastName="User";
 		List<UserEntity> users = userRepository.findUserByLastName(lastName);
 		assertNotNull(users);
-		assertTrue(users.size() == 2);
+		assertEquals(2, users.size());
 		
 		UserEntity user = users.get(0);
-		assertTrue(user.getLastName().equals(lastName));
+		assertEquals(user.getLastName(), lastName);
 	}
 	
 	@Test 
@@ -76,7 +76,7 @@ class UserRepositoryTest {
 		String keyword="erg";
 		List<UserEntity> users = userRepository.findUsersByKeyword(keyword);
 		assertNotNull(users);
-		assertTrue(users.size() == 2);
+		assertEquals(2, users.size());
 		
 		UserEntity user = users.get(0);
 		assertTrue(
@@ -91,11 +91,11 @@ class UserRepositoryTest {
 		String keyword="erg";
 		List<Object[]> users = userRepository.findUserFirstNameAndLastNameByKeyword(keyword);
 		assertNotNull(users);
-		assertTrue(users.size() == 2);
+		assertEquals(2, users.size());
 		
 		Object[] user = users.get(0);
-		
-		assertTrue(user.length == 2);
+
+		assertEquals(2, user.length);
 	
 		String userFirstName = String.valueOf(user[0]);
 		String userLastName = String.valueOf(user[1]);
@@ -117,8 +117,8 @@ class UserRepositoryTest {
 		UserEntity storedUserDetails = userRepository.findByUserId("1a2b3c");
 		
 		boolean storedEmailVerificationStatus = storedUserDetails.getEmailVerificationStatus();
-		
-		assertTrue(storedEmailVerificationStatus == newEmailVerificationStatus);
+
+		assertEquals(storedEmailVerificationStatus, newEmailVerificationStatus);
 
 	}
 	
@@ -130,7 +130,7 @@ class UserRepositoryTest {
 		UserEntity userEntity = userRepository.findUserEntityByUserId(userId);
 		
 		assertNotNull(userEntity);
-		assertTrue(userEntity.getUserId().equals(userId));
+		assertEquals(userEntity.getUserId(), userId);
 	}
 	
 	@Test
@@ -140,7 +140,7 @@ class UserRepositoryTest {
 		List<Object[]> records =  userRepository.getUserEntityFullNameById(userId);
 		
         assertNotNull(records);
-        assertTrue(records.size() == 1);
+		assertEquals(1, records.size());
         
         Object[] userDetails = records.get(0);
       
@@ -160,17 +160,17 @@ class UserRepositoryTest {
 		UserEntity storedUserDetails = userRepository.findByUserId("1a2b3c");
 		
 		boolean storedEmailVerificationStatus = storedUserDetails.getEmailVerificationStatus();
-		
-		assertTrue(storedEmailVerificationStatus == newEmailVerificationStatus);
+
+		assertEquals(storedEmailVerificationStatus, newEmailVerificationStatus);
 
 	}
 	
-	private void createRecrods()
+	private void createRecords()
 	{
 		// Prepare User Entity
 	     UserEntity userEntity = new UserEntity();
-	     userEntity.setFirstName("Sergey");
-	     userEntity.setLastName("Kargopolov");
+	     userEntity.setFirstName("Test");
+	     userEntity.setLastName("User");
 	     userEntity.setUserId("1a2b3c");
 	     userEntity.setEncryptedPassword("xxx");
 	     userEntity.setEmail("test@test.com");
@@ -195,10 +195,10 @@ class UserRepositoryTest {
 	     
 	     
 	     
-			// Prepare User Entity
+		 // Prepare User Entity
 	     UserEntity userEntity2 = new UserEntity();
-	     userEntity2.setFirstName("Sergey");
-	     userEntity2.setLastName("Kargopolov");
+	     userEntity2.setFirstName("Test");
+	     userEntity2.setLastName("User");
 	     userEntity2.setUserId("1a2b3cddddd");
 	     userEntity2.setEncryptedPassword("xxx");
 	     userEntity2.setEmail("test@test.com");
