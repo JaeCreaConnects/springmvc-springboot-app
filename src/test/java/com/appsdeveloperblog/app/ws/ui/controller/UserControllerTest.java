@@ -36,8 +36,8 @@ class UserControllerTest {
 		MockitoAnnotations.initMocks(this);
 		
 		userDto = new UserDto();
-        userDto.setFirstName("Sergey");
-        userDto.setLastName("Kargopolov");
+        userDto.setFirstName("Test");
+        userDto.setLastName("User");
         userDto.setEmail("test@test.com");
         userDto.setEmailVerificationStatus(Boolean.FALSE);
         userDto.setEmailVerificationToken(null);

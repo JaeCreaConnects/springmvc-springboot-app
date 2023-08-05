@@ -1,15 +1,13 @@
 package com.appsdeveloperblog.app.ws.shared;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
- 
+
+import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class UtilsTest {
 
@@ -28,8 +26,8 @@ class UtilsTest {
         assertNotNull(userId);
         assertNotNull(userId2);
 
-        assertTrue(userId.length() == 30);
-        assertTrue(!userId.equalsIgnoreCase(userId2));
+        assertEquals(30, userId.length());
+        assertFalse(userId.equalsIgnoreCase(userId2));
     }
 
     @Test

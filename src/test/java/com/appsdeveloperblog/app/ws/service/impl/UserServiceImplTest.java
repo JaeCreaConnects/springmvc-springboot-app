@@ -62,8 +62,8 @@ class UserServiceImplTest {
 		
 		userEntity = new UserEntity();
 		userEntity.setId(1L);
-		userEntity.setFirstName("Sergey");
-		userEntity.setLastName("Kargopolov");
+		userEntity.setFirstName("Test");
+		userEntity.setLastName("User");
 		userEntity.setUserId(userId);
 		userEntity.setEncryptedPassword(encryptedPassword);
 		userEntity.setEmail("test@test.com");
@@ -79,7 +79,7 @@ class UserServiceImplTest {
 		UserDto userDto = userService.getUser("test@test.com");
 
 		assertNotNull(userDto);
-		assertEquals("Sergey", userDto.getFirstName());
+		assertEquals("TestName", userDto.getFirstName());
 
 	}
 
@@ -102,8 +102,8 @@ class UserServiceImplTest {
 		when(userRepository.findByEmail(anyString())).thenReturn(userEntity);
 		UserDto userDto = new UserDto();
 		userDto.setAddresses(getAddressesDto());
-		userDto.setFirstName("Sergey");
-		userDto.setLastName("Kargopolov");
+		userDto.setFirstName("Test");
+		userDto.setLastName("User");
 		userDto.setPassword("12345678");
 		userDto.setEmail("test@test.com");
  	
@@ -128,8 +128,8 @@ class UserServiceImplTest {
  		
 		UserDto userDto = new UserDto();
 		userDto.setAddresses(getAddressesDto());
-		userDto.setFirstName("Sergey");
-		userDto.setLastName("Kargopolov");
+		userDto.setFirstName("Test");
+		userDto.setLastName("User");
 		userDto.setPassword("12345678");
 		userDto.setEmail("test@test.com");
 
